@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "outDir": "../../dist/apps/listing-ms",
+    "composite": false, // TODO: Need to understand this
+    "declaration": false // TODO: Need to understand this
+  }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello Condo Email</title>
+  </head>
+  <body style="max-width: 800px; margin: 20px auto; padding: 20px; font-family: Arial, sans-serif">
+    <div class="container" style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #fff">
+      {{header}}
+      <div style="margin-left: 5px; margin-top: 36px">
+        <p style="font-size: 14px; color: #333">
+          <b>Welcome to Hello Condo! </b>Your user account has been successfully created by our Super Admin team.
+        </p>
+        <p style="font-size: 14px; color: #333; margin-top: 36px">
+          <b>Your login details are as follows: </b>
+        </p>
+        <p style="font-size: 14px; color: #333"><strong>User ID:</strong> <span>{{email}}</span></p>
+        <p style="font-size: 14px; color: #333"><strong>Password:</strong> <span>{{password}}</span></p>
+        <p style="font-size: 14px; color: #333; margin-bottom: 36px; margin-top: 36px"></p>
+        <p style="font-size: 14px; color: #333; margin-top: 36px">
+          If you encounter any issues or have any questions, please do not hesitate to contact our support team at
+          hello@HelloCondo.com.
+        </p>
+        <p style="font-size: 14px; color: #333">We're excited to have you on board</p>
+        <p style="font-size: 14px; color: #333; margin-top: 36px">All the best,</p>
+        <p style="font-size: 14px; color: #333">Team HelloCondo</p>
+      </div>
+    </div>
+    {{footer}}
+  </body>
+</html>

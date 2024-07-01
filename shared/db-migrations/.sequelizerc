@@ -1,0 +1,11 @@
+// .sequelizerc
+const path = require("path");
+require("dotenv").config();
+
+module.exports = {
+  config: path.resolve(__dirname, "src/lib/config/migration.js"),
+  "models-path": path.resolve(__dirname, "src/lib/models"),
+  "seeders-path": path.resolve(__dirname, "src/lib/seeders"),
+  "migrations-path": path.resolve(__dirname, "src/lib/migrations"),
+  env: process.env.NODE_ENV,
+};

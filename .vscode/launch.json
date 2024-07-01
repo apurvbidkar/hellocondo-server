@@ -1,0 +1,34 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+
+    {
+      "command": "npx nx run admin-user-ms:serve",
+      "cwd": "${workspaceFolder}",
+      "name": "Run user-ms",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "npx nx run listing-ms:serve",
+      "cwd": "${workspaceFolder}",
+      "name": "Run listing-ms",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "npx nx run-many --target=serve --configuration=development",
+      "cwd": "${workspaceFolder}",
+      "name": "Run all",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "npx nx run admin-building-ms:serve",
+      "cwd": "${workspaceFolder}",
+      "name": "Run building-ms",
+      "request": "launch",
+      "type": "node-terminal"
+    }
+  ]
+}

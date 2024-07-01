@@ -1,0 +1,66 @@
+{
+  "name": "listing-ms",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/listing-ms/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/listing-ms",
+        "format": ["esm"],
+        "bundle": false,
+        "main": "apps/listing-ms/src/main.ts",
+        "tsConfig": "apps/listing-ms/tsconfig.app.json",
+        "assets": ["apps/listing-ms/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "listing-ms:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "listing-ms:build:development"
+        },
+        "production": {
+          "buildTarget": "listing-ms:build:production"
+        }
+      }
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build -f apps/listing-ms/Dockerfile . -t listing-ms"
+    },
+    "post-build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm run remove:db-models && npx nx run db-models:build && cd dist/shared/db-models/ && yalc publish --private && cd ../../apps/listing-ms && yalc add @condo-server/db-models"
+      }
+    }
+  }
+}

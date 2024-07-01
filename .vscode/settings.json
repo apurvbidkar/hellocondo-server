@@ -1,0 +1,9 @@
+{
+  "cSpell.words": ["Attom", "Bayan", "dockerfiles", "postbuild", "yalc"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  }
+}

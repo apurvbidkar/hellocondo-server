@@ -1,0 +1,22 @@
+{
+  "name": "@condo-server/db-migrations",
+  "version": "0.0.1",
+  "scripts": {
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:undo": "sequelize db:migrate:undo",
+    "migrate:undo:all": "npx sequelize-cli db:migrate:undo:all"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "pg": "^8.11.5",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.3",
+    "sequelize-auto": "^0.8.8",
+    "sequelize-cli": "^6.6.2",
+    "tslib": "^2.3.0"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "private": true
+}

@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "nrwl.angular-console",
+    "esbenp.prettier-vscode",
+    "amazonwebservices.aws-toolkit-vscode",
+    "streetsidesoftware.code-spell-checker",
+    "tyriar.sort-lines",
+    "wayou.vscode-todo-highlight",
+    "wix.vscode-import-cost"
+  ]
+}

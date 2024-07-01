@@ -1,0 +1,19 @@
+{
+  "name": "db-models",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "shared/db-models/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/shared/db-models",
+        "main": "shared/db-models/src/index.ts",
+        "tsConfig": "shared/db-models/tsconfig.lib.json",
+        "assets": ["shared/db-models/*.md"]
+      }
+    }
+  }
+}

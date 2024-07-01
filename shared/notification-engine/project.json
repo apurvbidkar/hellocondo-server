@@ -1,0 +1,26 @@
+{
+  "name": "notification-engine",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "shared/notification-engine/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/shared/notification-engine",
+        "main": "shared/notification-engine/src/index.ts",
+        "tsConfig": "shared/notification-engine/tsconfig.lib.json",
+        "assets": [
+          "shared/notification-engine/*.md",
+          {
+            "input": "shared/notification-engine/src/lib/templates",
+            "output": "src/lib/templates",
+            "glob": "**/!(*.ts)"
+          }
+        ]
+      }
+    }
+  }
+}

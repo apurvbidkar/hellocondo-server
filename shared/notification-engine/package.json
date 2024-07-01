@@ -1,0 +1,13 @@
+{
+  "name": "@condo-server/notification-engine",
+  "version": "0.0.1",
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.583.0",
+    "dotenv": "^16.4.5",
+    "tslib": "^2.3.0"
+  },
+  "type": "module",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "private": true
+}

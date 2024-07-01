@@ -1,0 +1,62 @@
+{
+  "name": "building-ms",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/building-ms/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/building-ms",
+        "format": ["esm"],
+        "bundle": false,
+        "main": "apps/building-ms/src/main.ts",
+        "tsConfig": "apps/building-ms/tsconfig.app.json",
+        "assets": ["apps/building-ms/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "building-ms:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "building-ms:build:development"
+        },
+        "production": {
+          "buildTarget": "building-ms:build:production"
+        }
+      }
+    },
+    "post-build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm run remove:db-models && npx nx run db-models:build && cd dist/shared/db-models/ && yalc publish --private && cd ../../apps/building-ms && yalc add @condo-server/db-models"
+      }
+    }
+  }
+}

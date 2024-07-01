@@ -1,0 +1,72 @@
+{
+  "name": "admin-user-ms",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/admin-user-ms/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/admin-user-ms",
+        "format": ["esm"],
+        "bundle": false,
+        "main": "apps/admin-user-ms/src/main.ts",
+        "tsConfig": "apps/admin-user-ms/tsconfig.app.json",
+        "assets": [
+          {
+            "input": "apps/admin-user-ms/src/templates",
+            "output": "templates",
+            "glob": "**/!(*.ts)"
+          }
+        ],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "admin-user-ms:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "admin-user-ms:build:development"
+        },
+        "production": {
+          "buildTarget": "admin-user-ms:build:production"
+        }
+      }
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build -f apps/admin-user-ms/Dockerfile . -t admin-user-ms"
+    },
+    "post-build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm run remove:db-models && npm run remove:notification-engine && npx nx run db-models:build && npx nx run notification-engine:build && cd dist/shared/db-models/ && yalc publish --private && cd ../notification-engine/ && yalc publish --private && cd ../../apps/admin-user-ms && yalc add @condo-server/db-models && yalc add @condo-server/notification-engine"
+      }
+    }
+  }
+}

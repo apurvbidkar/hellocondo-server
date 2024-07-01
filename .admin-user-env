@@ -1,0 +1,35 @@
+# Project environment
+NODE_ENV=development
+PORT=8001
+HOST=0.0.0.0
+
+# Database environment
+DB_HOST=23.23.232.214
+DB_PORT=5432
+DB_NAME=microservice_backend
+DB_DIALLCT=postgres
+DB_USER=postgres
+DB_PASSWORD=postgres@123
+
+# AWS configuration
+AWS_REGION=us-east-1
+AWS_ACCOUNT_ID=891377119783
+
+# AWS Cognitio
+COGNITO_USER_POOL_ID=us-east-1_33jVFFmoc
+COGNITO_CLIENT_ID=16o9jvvf3cg8hd4h2addp3nj3s
+COGNITO_CLIENT_SECRET=4av532ggn7g9jadl0vq7vmginhsh7lhqjvu35pfs999l6i0esk4
+COGNITO_DOMAIN="https=/condo-dev.auth.us-east-1.amazoncognito.com"
+
+# AWS S3
+PRIMARY_S3_BUCKET="hello-condo-cinc-portal-dev"
+
+# Emails
+PRIMARY_EMAIL_FROM="hello@hellocondo.com"
+
+# Domains
+ADMIN_DOMAIN_URL="https://admin-dev.hellocondo.com"
+
+# CORS configuration
+CORS_ALLOWED_ORIGINS="http://admin-dev.hellocondo.com"
+
